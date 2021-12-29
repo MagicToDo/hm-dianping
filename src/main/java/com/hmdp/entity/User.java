@@ -1,13 +1,14 @@
 package com.hmdp.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -42,9 +43,14 @@ public class User implements Serializable {
     private String password;
 
     /**
-     * 昵称，默认是用户id
+     * 昵称，默认是随机字符
      */
     private String nickName;
+
+    /**
+     * 用户头像
+     */
+    private String icon;
 
     /**
      * 创建时间

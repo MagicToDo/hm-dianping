@@ -1,7 +1,7 @@
 package com.hmdp.service;
 
+import com.hmdp.entity.UserInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.hmdp.entity.User;
 
 /**
  * <p>
@@ -9,8 +9,8 @@ import com.hmdp.entity.User;
  * </p>
  *
  * @author 虎哥
- * @since 2021-12-22
+ * @since 2021-12-24
  */
-public interface IUserService extends IService<User> {
+public interface IUserInfoService extends IService<UserInfo> {
 
 }

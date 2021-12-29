@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -16,54 +17,61 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author 虎哥
- * @since 2021-12-22
+ * @since 2021-12-24
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("tb_blog")
-public class Blog implements Serializable {
+@TableName("tb_user_info")
+public class UserInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 主键
+     * 主键，用户id
      */
-    @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
-    /**
-     * 商户id
-     */
-    private Long shopId;
-    /**
-     * 用户id
-     */
+    @TableId(value = "user_id", type = IdType.AUTO)
     private Long userId;
 
     /**
-     * 标题
+     * 城市名称
      */
-    private String title;
+    private String city;
 
     /**
-     * 探店的照片，最多9张，多张以","隔开
+     * 个人介绍，不要超过128个字符
      */
-    private String images;
+    private String introduce;
 
     /**
-     * 探店的文字描述
+     * 粉丝数量
      */
-    private String content;
+    private Integer fans;
 
     /**
-     * 点赞数量
+     * 关注的人的数量
      */
-    private Integer liked;
+    private Integer followee;
 
     /**
-     * 评论数量
+     * 性别，0：男，1：女
      */
-    private Integer comments;
+    private Boolean gender;
+
+    /**
+     * 生日
+     */
+    private LocalDate birthday;
+
+    /**
+     * 积分
+     */
+    private Integer credits;
+
+    /**
+     * 会员级别，0~9级,0代表未开通会员
+     */
+    private Boolean level;
 
     /**
      * 创建时间
