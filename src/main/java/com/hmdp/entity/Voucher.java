@@ -1,13 +1,15 @@
 package com.hmdp.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -62,24 +64,37 @@ public class Voucher implements Serializable {
     private Long actualValue;
 
     /**
+     * 优惠券类型
+     */
+    private Integer type;
+
+    /**
+     * 优惠券类型
+     */
+    private Integer status;
+    /**
      * 库存
      */
+    @TableField(exist = false)
     private Integer stock;
+
+    /**
+     * 生效时间
+     */
+    @TableField(exist = false)
+    private LocalDateTime beginTime;
+
+    /**
+     * 失效时间
+     */
+    @TableField(exist = false)
+    private LocalDateTime endTime;
 
     /**
      * 创建时间
      */
     private LocalDateTime createTime;
 
-    /**
-     * 生效时间
-     */
-    private LocalDateTime beginTime;
-
-    /**
-     * 失效时间
-     */
-    private LocalDateTime endTime;
 
     /**
      * 更新时间
