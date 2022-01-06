@@ -1,6 +1,6 @@
 package com.hmdp.mapper;
 
-import com.hmdp.pojo.SeckillVoucher;
+import com.hmdp.entity.SeckillVoucher;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
