@@ -7,7 +7,6 @@ import com.hmdp.entity.UserInfo;
 import com.hmdp.service.IUserInfoService;
 import com.hmdp.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -30,9 +29,6 @@ public class UserController {
 
     @Resource
     private IUserInfoService userInfoService;
-
-    @Resource
-    private StringRedisTemplate stringRedisTemplate;
 
     /**
      * 发送手机验证码
