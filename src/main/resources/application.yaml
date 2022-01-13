@@ -25,3 +25,5 @@ mybatis-plus:
 logging:
   level:
     com.hmdp: debug
+  pattern:
+    dateformat: mm:ss.SSS
