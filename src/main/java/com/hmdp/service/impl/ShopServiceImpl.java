@@ -52,7 +52,7 @@ public class ShopServiceImpl extends ServiceImpl<ShopMapper, Shop> implements IS
             return Result.fail("店铺不存在！");
         }
         // 7.返回
-        return Result.ok(null);
+        return Result.ok(shop);
     }
 
     @Override
