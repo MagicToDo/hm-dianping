@@ -20,7 +20,6 @@ import javax.servlet.http.HttpSession;
  * </p>
  *
  * @author 虎哥
- * @since 2021-12-22
  */
 @Slf4j
 @RestController
