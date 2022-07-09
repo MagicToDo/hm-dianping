@@ -1,6 +1,7 @@
 package com.hmdp.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.BooleanUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hmdp.dto.Result;
 import com.hmdp.entity.VoucherOrder;
@@ -9,6 +10,7 @@ import com.hmdp.service.ISeckillVoucherService;
 import com.hmdp.service.IVoucherOrderService;
 import com.hmdp.utils.RedisIdWorker;
 import com.hmdp.utils.UserHolder;
+import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.aop.framework.AopContext;
@@ -36,6 +38,7 @@ import java.util.concurrent.Executors;
  * @author 虎哥
  * @since 2021-12-22
  */
+@Slf4j
 @Service
 public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, VoucherOrder> implements IVoucherOrderService {
 
@@ -64,15 +67,17 @@ public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, Vou
     @PostConstruct
     private void init(){
         // TODO 需要秒杀下单功能的同学自己解开下面的注释
-        // SECKILL_ORDER_EXECUTOR.submit(new VoucherOrderHandler());
+        SECKILL_ORDER_EXECUTOR.submit(new VoucherOrderHandler());
     }
 
     private class VoucherOrderHandler implements Runnable{
-        String queueName = "stream.orders";
+        private final String queueName = "stream.orders";
         @Override
         public void run() {
             while (true) {
                 try {
+                    // 0.初始化stream
+                    initStream();
                     // 1.获取消息队列中的订单信息 XREADGROUP GROUP g1 c1 COUNT 1 BLOCK 2000 STREAMS s1 >
                     List<MapRecord<String, Object, Object>> list = stringRedisTemplate.opsForStream().read(
                             Consumer.from("g1", "c1"),
@@ -96,6 +101,25 @@ public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, Vou
                     log.error("处理订单异常", e);
                     handlePendingList();
                 }
+            }
+        }
+
+        public void initStream(){
+            Boolean exists = stringRedisTemplate.hasKey(queueName);
+            if (BooleanUtil.isFalse(exists)) {
+                log.info("stream不存在，开始创建stream");
+                // 不存在，需要创建
+                stringRedisTemplate.opsForStream().createGroup(queueName, ReadOffset.latest(), "g1");
+                log.info("stream和group创建完毕");
+                return;
+            }
+            // stream存在，判断group是否存在
+            StreamInfo.XInfoGroups groups = stringRedisTemplate.opsForStream().groups(queueName);
+            if(groups.isEmpty()){
+                log.info("group不存在，开始创建group");
+                // group不存在，创建group
+                stringRedisTemplate.opsForStream().createGroup(queueName, ReadOffset.latest(), "g1");
+                log.info("group创建完毕");
             }
         }
 
