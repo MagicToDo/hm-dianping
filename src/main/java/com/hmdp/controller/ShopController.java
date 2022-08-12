@@ -7,6 +7,9 @@ import com.hmdp.dto.Result;
 import com.hmdp.entity.Shop;
 import com.hmdp.service.IShopService;
 import com.hmdp.utils.SystemConstants;
+import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -21,6 +24,8 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("/shop")
+@Api("商铺信息")
+@Tag(name = "商铺信息",description = "商铺信息")
 public class ShopController {
 
     @Resource
@@ -55,6 +60,7 @@ public class ShopController {
      * @return 无
      */
     @PutMapping
+    @Operation(summary = "商铺信息更新")
     public Result updateShop(@RequestBody Shop shop) {
         // 写入数据库
         return shopService.update(shop);

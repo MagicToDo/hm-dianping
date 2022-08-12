@@ -20,9 +20,16 @@ public class MvcConfig implements WebMvcConfigurer {
 //		页面登录拦截器
 		registry.addInterceptor(new LoginInterceptor())
 				.excludePathPatterns(
-				"/user/code",
-				"/user/login"
-				).order(1);
+						"/user/code",
+						"/user/login",
+						"/shop",
+						"/shop/**",
+						"/shop-type/list",
+						"/api/**"
+				).excludePathPatterns("/swagger**/**")
+				.excludePathPatterns("/webjars/**")
+				.excludePathPatterns("/v3/**")
+				.excludePathPatterns("/doc.html").order(1);
 //		缓存刷新拦截器
 		registry.addInterceptor(new RefreshTokenInterceptor(stringRedisTemplate)).addPathPatterns("/**").order(0);
 	}

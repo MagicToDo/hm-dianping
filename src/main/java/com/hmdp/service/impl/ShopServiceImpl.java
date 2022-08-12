@@ -7,6 +7,7 @@ import com.hmdp.entity.Shop;
 import com.hmdp.mapper.ShopMapper;
 import com.hmdp.service.IShopService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -63,7 +64,8 @@ public class ShopServiceImpl extends ServiceImpl<ShopMapper, Shop> implements IS
 //		删除缓存
 		if (b&&id!=null){
 			stringRedisTemplate.delete("cache:shop:"+id);
-			return Result.ok("商铺信息更新成功");
+//			return Result.ok("商铺信息更新成功");
+			return Result.ok();
 		}
 		return Result.fail("商铺信息更新错误");
 	}
