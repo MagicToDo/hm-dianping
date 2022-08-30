@@ -16,7 +16,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 public interface IShopService extends IService<Shop> {
 
-	Result queryById(Long id);
+	Result queryById(Long id) throws InterruptedException;
 
 	Result update(Shop shop);
 }

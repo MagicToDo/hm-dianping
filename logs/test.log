@@ -1,0 +1,23 @@
+18:43:00.761 INFO  org.springframework.boot.StartupInfoLogger 55 logStarting - Starting HmDianPingApplication on TX-001 with PID 106692 (D:\stock\hm-dianping\target\classes started by Administrator in D:\stock\hm-dianping)
+18:43:00.770 DEBUG org.springframework.boot.StartupInfoLogger 56 logStarting - Running with Spring Boot v2.3.12.RELEASE, Spring v5.2.15.RELEASE
+18:43:00.772 INFO  org.springframework.boot.SpringApplication 648 logStartupProfileInfo - No active profile set, falling back to default profiles: default
+18:43:01.473 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 249 multipleStoresDetected - Multiple Spring Data modules found, entering strict repository configuration mode!
+18:43:01.476 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 127 registerRepositoriesIn - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+18:43:01.500 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 187 registerRepositoriesIn - Finished Spring Data repository scanning in 15ms. Found 0 Redis repository interfaces.
+18:43:01.660 INFO  org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor 323 intercept - @Bean method SwaggerAutoConfiguration.docketBeanFactoryPostProcessor is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+18:43:01.950 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 108 initialize - Tomcat initialized with port(s): 8081 (http)
+18:43:01.961 INFO  org.apache.juli.logging.DirectJDKLog 173 log - Initializing ProtocolHandler ["http-nio-8081"]
+18:43:01.962 INFO  org.apache.juli.logging.DirectJDKLog 173 log - Starting service [Tomcat]
+18:43:01.963 INFO  org.apache.juli.logging.DirectJDKLog 173 log - Starting Servlet engine: [Apache Tomcat/9.0.46]
+18:43:01.966 INFO  org.apache.juli.logging.DirectJDKLog 173 log - An older version [1.2.18] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+18:43:01.966 INFO  org.apache.juli.logging.DirectJDKLog 173 log - Loaded Apache Tomcat Native library [1.2.18] using APR version [1.6.5].
+18:43:01.967 INFO  org.apache.juli.logging.DirectJDKLog 173 log - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+18:43:01.967 INFO  org.apache.juli.logging.DirectJDKLog 173 log - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+18:43:01.971 INFO  org.apache.juli.logging.DirectJDKLog 173 log - OpenSSL successfully initialized [OpenSSL 1.1.1  11 Sep 2018]
+18:43:02.059 INFO  org.apache.juli.logging.DirectJDKLog 173 log - Initializing Spring embedded WebApplicationContext
+18:43:02.060 INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext 285 prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 1211 ms
+18:43:03.515 INFO  org.springframework.scheduling.concurrent.ExecutorConfigurationSupport 181 initialize - Initializing ExecutorService 'applicationTaskExecutor'
+18:43:03.733 INFO  org.apache.juli.logging.DirectJDKLog 173 log - Starting ProtocolHandler ["http-nio-8081"]
+18:43:03.749 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 220 start - Tomcat started on port(s): 8081 (http) with context path ''
+18:43:03.987 INFO  org.springframework.boot.StartupInfoLogger 61 logStarted - Started HmDianPingApplication in 3.559 seconds (JVM running for 4.582)
+18:51:21.742 INFO  org.springframework.scheduling.concurrent.ExecutorConfigurationSupport 218 shutdown - Shutting down ExecutorService 'applicationTaskExecutor'
