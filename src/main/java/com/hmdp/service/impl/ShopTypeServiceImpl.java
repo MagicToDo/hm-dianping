@@ -1,11 +1,13 @@
 package com.hmdp.service.impl;
 
+import cn.hutool.cache.Cache;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hmdp.dto.Result;
 import com.hmdp.entity.ShopType;
 import com.hmdp.mapper.ShopTypeMapper;
 import com.hmdp.service.IShopTypeService;
+import com.hmdp.utils.CacheClient;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -27,6 +29,8 @@ import java.util.concurrent.TimeUnit;
 public class ShopTypeServiceImpl extends ServiceImpl<ShopTypeMapper, ShopType> implements IShopTypeService {
 	@Resource
 	private StringRedisTemplate stringRedisTemplate;
+
+
 
 	@Override
 	public Result queryAllType() {
